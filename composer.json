@@ -1,0 +1,7 @@
+{
+    "require": {
+        "aliyun/aliyun-tablestore-sdk-php": "^5.0",
+        "adhocore/cli": "^0.9.0",
+        "vlucas/phpdotenv": "^5.3"
+    }
+}
