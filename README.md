@@ -19,6 +19,8 @@ cp .env.example .env
 输入OTS信息
 
 运行下面的前提是创建索引
+composer install
+
 php ots/modify_index.php
 
 ```
