@@ -16,15 +16,17 @@ $new_index_name = $interactor->prompt("新索引名", null, null, 5);
 
 $add_fields = [
     [
-        'field_name' => 'text',
-        'field_type' => FieldTypeConst::TEXT,
-        'analyzer' => 'single_word',
+        'field_name' => 'sort',
+        'field_type' => FieldTypeConst::LONG,
         'index' => true,
-        'enable_sort_and_agg' => false,
+        'enable_sort_and_agg' => true,
         'store' => true,
         'is_array' => false
     ]
 ];
+// $delete_fields = [
+//     'sort' => '_',
+// ];
 
 do {
     $is_processing = true;
@@ -33,7 +35,7 @@ do {
         echo '创建索引：', $new_index_name, "\n";
     //  用新的索引，旧的索引名字进行重建
         create_new_index_by_index_schemas(
-            $table_name, $new_index_name, $old_index_name, $add_fields);
+            $table_name, $new_index_name, $old_index_name, $add_fields, $delete_fields);
     }
     else {
         echo '已经存在索引：', $new_index_name, "\n";

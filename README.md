@@ -24,3 +24,19 @@ composer install
 php ots/modify_index.php
 
 ```
+
+
+例子
+====
+```
+删除索引字段
+修改 ots/modify_index.php 
+delete_fields 数组添加
+
+添加索引字段
+修改 ots/modify_index.php
+add_fields 数组
+
+修改某字段类型则修改 add_fields 且 delete_fields 数组
+
+```

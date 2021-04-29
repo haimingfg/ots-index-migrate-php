@@ -45,15 +45,27 @@ function create_new_index_by_index_schemas(
         foreach ($field_schemas as $field) {
             $new_field_schemas[] = $field;
         }
+        
+        if (!empty($delete_fields)) {
+            foreach ($new_field_schemas as $index => $new_field_schema) {
+                $field = $new_field_schema['field_name'];
+                // var_dump($delete_fields, $field);
+                if (isset($delete_fields[$field])) {
+                    unset($new_field_schemas[$index]);
+                }
+            }
+        }
 
         if (!empty($add_fields)) {
             $new_field_schemas = array_merge($new_field_schemas, $add_fields);
         }
-        // var_dump($new_field_schemas);exit;
+
+        
     
         if (!empty($new_field_schemas)) {
             $request_schema['schema']['field_schemas'] = $new_field_schemas;
         }
+        // var_dump($request_schema);exit;
         $response = $otsClient->createSearchIndex($request_schema);
     }
 
